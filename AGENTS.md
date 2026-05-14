@@ -203,11 +203,13 @@ Always use the GitHub CLI tool `gh` to manage issues and pull requests on GitHub
 6. Close with final commit or PR
 
 **Creating Issues:**
-- Use issue templates (if available)
+- Use issue templates from `.github/ISSUE_TEMPLATE` (if available)
 - Provide clear reproduction steps for bugs
 - Include relevant game design context for features
 - Add appropriate labels (bug, feature, enhancement, etc.)
 - Link to related issues or discussions
+- create issues on GitHub using `gh` if possible
+- create issues locally in `.issues` if GitHub is not available
 
 ---
 
