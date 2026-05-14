@@ -1,114 +1,164 @@
 # Relic Runner
 
-"Relic Runner" is a "twin-stick-shooter" game.
+A top-down twin-stick shooter roguelike built with Godot 4.
 
-### Goal
+**Game Design Document:** See [CONCEPT.md](CONCEPT.md)
 
-There is no real "goal" in the game. The achievment is to get the highest "score" during your run. Currently it's not really clear what "score" actually means, but it's used like in the term "highscore".
+---
 
-### Movement
+## About
 
-The player moves the player with the left stick into 8 directions (N, NE, E, SE, S, SW, W, NW) and the shooting direction with the other stick in the same directions.
+Relic Runner is a permadeath twin-stick shooter where players fight through wave-based arenas, collect essence to upgrade their character, and unlock powerful relics for future runs. The game features 8-directional movement and shooting, strategic resource management, and a branching skill tree system.
 
-The player is shooting as long as the right stick is pointing towards a direction and moving as long as the left stick is pointing towards a direction. The player can move both sticks in any direction (of the 8 given ones).
+**Target Platform:** PC (Steam) with potential Nintendo Switch port  
+**Status:** Early development
 
-The player can move freely, except there are obstacles, in a fixed area. the area is always visible completely.
+---
 
-### Enemies
+## Development Setup
 
-Enemies spawn from outside the area and try to 'hit' the player. In later levels with higher difficulty the enemies also have range weapons to attack the player by shooting or throwing at the player.
+### Prerequisites
+- [Godot 4.x](https://godotengine.org/download)
+- GDScript knowledge (no C#/.NET)
 
-### Life & Death
+### Getting Started
 
-The player has a specific 'life span' available when entering the area. It's reduced when hit by enemy or enemy weapon. The reduction depends on the strength of the enemy or enemy weapon. When no 'life' is left the player dies.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/relic-runner.git
+   cd relic-runner
+   ```
 
-The player does only have a single live per run. when the player dies the run is over.
+2. **Open in Godot**
+   - Launch Godot 4
+   - Import the project
+   - Select the `project.godot` file
 
-### Items
+3. **Run the game**
+   - Press `F5` or click "Run Project"
 
-> TODO: we need a better name for this in the domain to distinguish it from shop items (see below)
+---
 
-Enemies drop items when killed. Not every enemy, but random ones depending on the level difficulty or area. this is yet to be defined.
+## Project Structure
 
-Those items are only available within the area and will be lost when
-- either the player dies
-- the area is completed
+```
+relic-runner/
+├── assets/          # Art, audio, and other game assets
+├── scenes/          # Godot scene files (.tscn)
+├── scripts/         # GDScript files (.gd)
+├── resources/       # Godot resources (materials, themes, etc.)
+├── addons/          # Third-party plugins
+├── CONCEPT.md       # Game design document
+├── README.md        # This file
+└── project.godot    # Godot project configuration
+```
 
-Typical items are:
-- faster shooting speed
-- more bullets
-- more area
-- kill all at once
-- heal
-- non-permament armor
-- improved collection area (for coins and items see below)
-- ...
+---
 
-### Coins
+## Technical Specifications
 
-All enemies drop essence items. The player has to collect the essence to earn them. uncollected essence is "lost" when the area is finished.
+### Display
+- **Base Resolution:** 1280x720 (16:9)
+- **Scaling:** Integer scaling (2x, 3x, 4x)
+- **Supported Resolutions:** 1920x1080, 1280x720, 1366x768
+- **Modes:** Fullscreen, Windowed
 
-### Shop 
+### Art Style
+- **Perspective:** Top-down
+- **Style:** Minimalistic pixel art
+- **Tile Size:** 16x16 (or 32x32 if needed)
 
-Essence is used in the shop. Essence can 
-1. be used directly to refill the life-bar
-2. sold for coins
+### Controls
+- **Primary:** Gamepad (twin-stick)
+- **Secondary:** Keyboard + Mouse
+- **Tertiary:** Keyboard only
 
-Coins are used to buy items from the shop. The shop is available after each area run. 
+See [CONCEPT.md](CONCEPT.md) for detailed control mappings.
 
-The shop has no "random item" but provides a items in a skill tree. Items in the tree can have multiple levels (3 or 5?). Each item owned in the skill provides access to additional items in the skill tree. The items can have synergy effects. over all the perk-system has yet to be defined.
+---
 
-Currently it's only important to know:
-1. The player has the ability to "save" essence & coins. They do not need to be spend
-2. There is always the oportunity to by 'strength' using essence to fill up the life-bar for the next area
-3. Items in the shop do either improve character skills or weapon skills.
+## Building for Release
 
+### Export Presets
 
-### Relics
+**PC (Windows/Linux/macOS)**
+1. Open Project → Export
+2. Select platform preset
+3. Configure export settings:
+   - Texture Format: VRAM Compressed
+   - Export Mode: Release
+4. Export
 
-Relics are special to the world the player currently plays. They are collectables which can be collected at the end of the world run when the last area of the world has been finished.
+**Steam Integration** (future)
+- Steamworks SDK integration pending
+- Achievement implementation
+- Cloud save support
 
-Relics can be random. The player always has the chance to select one out of three relics.
+**Nintendo Switch** (future port)
+- Requires Nintendo Developer Program membership
+- Export via Godot's Switch export template
 
-Relics are equiped automatically for the rest of the run.
+---
 
-### Achievements
+## Testing
 
-The game could also contains some sort of achievment system. I'm thinking about something like:
-- Title of the Character depending on the number of kills (overall)
-- Number of coins spend on the shop
-- All relics equipped
-- All items unlocked
-- All items fully extended
-- ... and so on
+### Playtesting Focus Areas
+- Balance: Essence economy, skill tree progression
+- Difficulty curve: Wave scaling, enemy behavior
+- Controls: 8-direction snapping (especially KB+M)
+- Performance: Maintain 60 FPS on target hardware
 
+---
 
-### Progress
+## Contributing
 
-Currently the game design is as follows, but this is very early and might be changed.
+This is currently a solo/small team project. Contribution guidelines TBD.
 
-"Relic Runner" consists of several worlds (themed settings like forrest, dessert, moon, spaceship etc). Each world except the first one is available when the prio world has been finished. Once a world has been unlocked it stays unlocked and the player can decide which world to enter first. This allowes to provide DLC later on.
+---
 
-The later the world the higher the earnings but also the enemy difficulty and the prices in the shop. It might make sense to have different skill trees per world, but this needs to be further refined.
+## Roadmap
 
-Each world consists of multiple areas. The areas are some kind of connected (like rooms). The player has to achive the area goal to be able to head to the next area. The later the area the higher the difficult level of the areas are. How many areas per worls is currently not defined yet and depends heavily on the balance of the skill tree items, the difficulty levels and some more dimensions.
+### Early Access (v0.1)
+- [x] Game design concept finalized
+- [ ] Core movement & shooting mechanics
+- [ ] Wave spawning system
+- [ ] Essence & power-up systems
+- [ ] Basic shop & skill tree
+- [ ] Forest world (5 areas)
 
-Each area is fixed. the player always sees the complete area. there is no scrolling intended (like eg in brotato). The difficulty of each area depends on the number of enemies and the strength of the enemies.
+### Alpha (v0.5)
+- [ ] All 3 worlds (Forest, Desert, Tundra)
+- [ ] Complete skill tree
+- [ ] Relic system
+- [ ] Highscore & achievements
+- [ ] Audio implementation
+- [ ] Balance pass
 
-Areas can not be accessed more than one during a run.
+### Beta (v0.9)
+- [ ] Polish pass (VFX, juice, feedback)
+- [ ] UI/UX refinement
+- [ ] Performance optimization
+- [ ] Playtesting & bug fixing
 
-The last area of a world always provides a 'Relic'. Currently the idea is to visually present something like a treasure box which contains tree relics. The user has to choose one of the three. Each relic gives very specific combat bonus (active or passiv). Relics are specific to the current world and should match the theme setting of this world.
+### Release (v1.0)
+- [ ] Steam integration
+- [ ] Marketing assets
+- [ ] Launch on Steam Early Access
 
-The player automatically equips the relic and it's activated for the next world. This should allow, in conjunction with the skill tree of the world, to further shape the type of character the player want's to build for his run (tank, warrior, aggressiv, passiv or others).
+---
 
-## Visual concepts
+## License
 
-Currently the game is seen as top down pixel shooter. I would prefer a very minimalistic pixel style. Tile-size should be 16x16 but might be changed to 32x32 if the graphics need to be more detailed (eg to better differnciate the worlds, items, enemies)
+TBD - All rights reserved pending license selection.
 
+---
 
+## Contact
 
-## Open for discussion
+**Developer:** [Your Name]  
+**Email:** [Your Email]  
+**Twitter/X:** [@YourHandle]
 
-- Race/Type of protagonist
-- Name of protagonist (depends on race/type)
-- Settings
+---
+
+*Last Updated: 2026-05-14*
