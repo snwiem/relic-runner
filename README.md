@@ -37,12 +37,28 @@ Relic Runner is a permadeath twin-stick shooter where players fight through wave
 3. **Run the game**
    - Press `F5` or click "Run Project"
 
+### Pi Agent Skill (For AI-Assisted Development)
+
+This project includes a pi agent skill for Godot development located at `.pi/skills/godot/`.
+
+**Available commands:**
+- Validate project: `godot --headless --editor --quit --path . 2>&1`
+- Run game: `godot --path . 2>&1 | head -50`
+- Run specific scene: `godot --path . scenes/path/to/scene.tscn 2>&1 | head -50`
+- Check for errors: `godot --headless --check-only --path . 2>&1`
+
+**Godot location:** `~/.local/bin/godot` (version 4.6.2)
+
+See `.pi/skills/godot/SKILL.md` for complete documentation and additional commands.
+
 ---
 
 ## Project Structure
 
 ```
 relic-runner/
+├── .pi/
+│   └── skills/      # Pi agent skills (Godot commands)
 ├── assets/          # Art, audio, and other game assets
 ├── scenes/          # Godot scene files (.tscn)
 ├── scripts/         # GDScript files (.gd)
