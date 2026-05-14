@@ -8,7 +8,7 @@ A top-down twin-stick shooter roguelike built with Godot 4.
 
 ## About
 
-Relic Runner is a permadeath twin-stick shooter where players fight through wave-based arenas, collect essence to upgrade their character, and unlock powerful relics for future runs. The game features 8-directional movement and shooting, strategic resource management, and a branching skill tree system.
+Relic Runner is a permadeath twin-stick shooter where players fight through wave-based stages, collect essence to upgrade their character, and unlock powerful relics for future runs. The game features 8-directional movement and shooting, strategic resource management, and a branching skill tree system.
 
 **Target Platform:** PC (Steam) with potential Nintendo Switch port  
 **Status:** Early development
@@ -77,6 +77,20 @@ See [CONCEPT.md](CONCEPT.md) for detailed control mappings.
 
 ---
 
+## Game Structure
+
+### Hierarchy
+- **World**: DLC/Expansion (e.g., Earth World, Moon World)
+- **Area**: Themed environment (e.g., Forest, Desert, Tundra)
+- **Stage**: Individual playable level (e.g., Forest Stage 1-5)
+
+### Early Access Content (Earth World)
+- **Forest Area**: 5 stages (short)
+- **Desert Area**: 10 stages (medium)
+- **Tundra/Ice Area**: 15 stages (long)
+
+---
+
 ## Building for Release
 
 ### Export Presets
@@ -124,10 +138,10 @@ This is currently a solo/small team project. Contribution guidelines TBD.
 - [ ] Wave spawning system
 - [ ] Essence & power-up systems
 - [ ] Basic shop & skill tree
-- [ ] Forest world (5 areas)
+- [ ] Forest area (5 stages)
 
 ### Alpha (v0.5)
-- [ ] All 3 worlds (Forest, Desert, Tundra)
+- [ ] All 3 areas (Forest, Desert, Tundra)
 - [ ] Complete skill tree
 - [ ] Relic system
 - [ ] Highscore & achievements
