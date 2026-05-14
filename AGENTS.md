@@ -133,10 +133,15 @@ func _handle_death() -> void:
 ### Git Workflow
 
 **Branch Strategy:**
-- `main` - Stable, release-ready code
-- `dev` - Integration branch for features
+- `main` - Continous integration branch for features and bugfixes
 - `feature/<name>` - Individual features
 - `bugfix/<issue-number>` - Bug fixes
+
+**Releases:**
+
+Releases are always created from `main` branch using `git tags`.
+Version follow semantic versioning strategy of the format `<major>.<minor>.<patch>`.
+Tags are always prefixed with `v`. An example is `v0.1.433`.
 
 **Commit Messages:**
 
@@ -186,6 +191,8 @@ Fixes #128
 - Write clear, descriptive commit messages
 
 ### GitHub Issue Management
+
+Always use the GitHub CLI tool `gh` to manage issues and pull requests on GitHub.
 
 **When Working on Issues:**
 1. Read the full issue description and comments
