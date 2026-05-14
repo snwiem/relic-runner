@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussion / Questions
+    url: https://github.com/yourusername/relic-runner/discussions
+    about: For general questions, ideas, or discussions about the game
+  - name: Game Design Document
+    url: https://github.com/yourusername/relic-runner/blob/main/CONCEPT.md
+    about: Review the complete game design concept
